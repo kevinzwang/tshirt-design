@@ -3,6 +3,9 @@
 var img = new Image();
 img.src = "text.jpg";
 
+var canvas = document.getElementById("drawCanvas");
+var ctx = canvas.getContext("2d");
+
 var imgCanvas = document.createElement('canvas');
 var imgCtx = imgCanvas.getContext('2d');
 
@@ -13,6 +16,10 @@ var imgHeight = img.height;
 img.onload = function () {
 	imgCanvas.width = img.width;
 	imgCanvas.height = img.height;
+
+	canvas.width = img.width;
+	canvas.height = img.height;
+
 	imgCtx.drawImage(img, 0, 0);
 	imgData = imgCtx.getImageData(0, 0, img.width, img.height).data;
 	generate()
@@ -20,9 +27,6 @@ img.onload = function () {
 
 // actual stuff
 function generate() {
-
-	var canvas = document.getElementById("drawCanvas");
-	var ctx = canvas.getContext("2d");
 
 	ctx.fillStyle = "white"
 	ctx.strokeStyle = 'white';
@@ -33,8 +37,11 @@ function generate() {
 
 	var minDist = 24
 
+	var limit = 1000000
+
 	var numPoints = 200
-	while (pointCount < numPoints) {
+	while (pointCount < numPoints && limit > 0) {
+		limit--
 		var x = Math.floor(Math.random() * imgWidth)
 		var y = Math.floor(Math.random() * imgHeight)
 
@@ -65,6 +72,10 @@ function generate() {
 			ctx.fill()
 			ctx.closePath()
 		}
+	}
+
+	if (pointCount < numPoints) {
+		console.log("points didn't fit :(")
 	}
 
 	var radius = 70
