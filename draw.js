@@ -33,7 +33,8 @@ function generate() {
 
 	var minDist = 24
 
-	while (pointCount < 200) {
+	var numPoints = 200
+	while (pointCount < numPoints) {
 		var x = Math.floor(Math.random() * imgWidth)
 		var y = Math.floor(Math.random() * imgHeight)
 
