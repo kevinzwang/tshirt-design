@@ -2,6 +2,8 @@
 
 Code for submission if the 2018 Carlmont High School Computer Science department T-Shirt design contest.
 
+![example.jpg](https://github.com/kevinzwang/tshirt-design/blob/master/example.jpg?raw=true)
+
 Does not run on Chrome for some reason.
 
 ## Quickstart
